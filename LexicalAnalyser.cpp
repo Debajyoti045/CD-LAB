@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <fstream>
 using namespace std;
 bool isOperator(char ch) {
     static const unordered_set<char> operators = {'+', '-', '*', '/', '%', '='};
@@ -32,21 +31,19 @@ bool isConstant(string word){
     return true;
 }
 int main()
-{
-    ifstream inputFile("test.txt");
-    if(!inputFile){
-        cout<<"file not opened!"<<endl;
-    }
-    else{
-        char ch;
-        string buffer;
-       while(inputFile.get(ch)){
-          if(isOperator(ch)){
-            cout<<ch<<" is an operator"<<endl;
-          }
-          else if(ch==';') cout<<ch<<" is a delimeter"<<endl;
-          else if((ch>='a' && ch<='z') || (ch>='A' && ch<='Z') || (ch>='0' && ch<='9') ||(ch=='_')){
-              buffer+=ch;
+{       
+    string s;
+    cout<<"Enter the string:"<<endl;
+    getline(cin,s);
+    string buffer = "";
+    for(auto it:s)
+    {
+        if(isOperator(it)){
+            cout<<it<<" is an operator"<<endl;
+        }
+        else if(it==';') cout<<it<<" is a delimeter"<<endl;
+        else if((it>='a' && it<='z') || (it>='A' && it<='Z') || (it>='0' && it<='9') ||(it=='_')){
+              buffer+=it;
           }
           else if(!buffer.empty()){
              if(isKeyword(buffer)) cout<<buffer<<" is a keyword"<<endl;
@@ -56,10 +53,8 @@ int main()
                 cout<<buffer<<" Error not a valid identifier"<<endl;
                 break;
              }
-             buffer.clear();
+             buffer = "";
           }
-       }
-       inputFile.close();
-    }
+     }
     return 0;
 }

@@ -16,9 +16,9 @@ using namespace std;
 //Parsing Table
 unordered_map<char,unordered_map<char,string>> parseTable = {
     {'E', {{'d', "TJ"}, {'(', "TJ"}}},
-    {'J', {{'+', "+TJ"}, {'$', ""}, {')', ""}}},
+    {'J', {{'+', "+TJ"}, {'$', "e"}, {')', "e"}}},
     {'T', {{'d', "FK"}, {'(', "FK"}}},
-    {'K', {{'*', "*FK"}, {'$', ""}, {')', ""}, {'+', ""}}},
+    {'K', {{'*', "*FK"}, {'$', "e"}, {')', "e"}, {'+', "e"}}},
     {'F', {{'d', "d"}, {'(', "(E)"}}}
 };
 bool parseString(string s){
@@ -39,6 +39,8 @@ bool parseString(string s){
             char terminal = s[i];
             auto production = parseTable[nonTerminal];
             string p = production[terminal];
+            if(p == "") return false;
+            if(p == "e") continue;
             for(int j=p.size()-1;j>=0;j--){
                 st.push(p[j]);
             }

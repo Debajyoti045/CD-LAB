@@ -66,3 +66,6 @@ int main()
     }
     return 0;
 }
+
+// (a+b)*c -> accepted
+// a/b+c -> rejected 

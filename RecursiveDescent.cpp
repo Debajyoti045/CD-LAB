@@ -1,6 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//   Grammar:
+//       E -> TE'
+//       E' -> +TE' | null
+//       T -> FT'
+//       T' -> *FT' | null
+//       F -> (E) | id
+
 string s;
 int i = 0;
 

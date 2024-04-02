@@ -44,6 +44,7 @@ void procedureF(){
         i++;
         procedureE();
         if(s[i]!=')') throw runtime_error("Expected )");
+        else i++;
     }
     else if(s[i]>='a' && s[i]<='z'){
         i++;
